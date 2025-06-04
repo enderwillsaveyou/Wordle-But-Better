@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordle But Better</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="controls">
+        <button id="theme-btn">Change Theme</button>
+        <span id="coins-display">Coins: 0</span>
+        <span id="streak-display">Streak: 0</span>
+        <button id="stats-btn">Trophies</button>
+    </div>
+    <div id="mascot" class="mascot">📚</div>
+    <div id="board"></div>
+
+    <div id="mystery-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="mystery-message"></p>
+            <button id="close-mystery">Close</button>
+        </div>
+    </div>
+
+    <div id="stats-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Trophy Case</h2>
+            <ul id="trophies"></ul>
+            <button id="close-stats">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
