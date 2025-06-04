@@ -1,6 +1,16 @@
-const board = document.getElementById('board');
+// Grab the board element once the DOM is ready. Using a listener
+// avoids "Cannot read properties of null" errors when the script
+// executes before the HTML element exists.
+let board;
+document.addEventListener('DOMContentLoaded', () => {
+    board = document.getElementById('board');
+    createTiles(MAX_ROWS, MAX_COLS); // initialize the board after we have it
+});
 
 function createTiles(rows = 6, cols = 5) {
+    // clear any existing content so a new game can reset correctly
+    board.innerHTML = '';
+
     for (let r = 0; r < rows; r++) {
         const row = document.createElement('div');
         row.className = 'row';
@@ -19,8 +29,6 @@ let currentRow = 0; // index of the active row
 let currentCol = 0; // index within the active row
 const MAX_ROWS = 6;
 const MAX_COLS = 5;
-
-createTiles(MAX_ROWS, MAX_COLS); // initialize the board
 
 document.addEventListener('keydown', handleKeyPress);
 
