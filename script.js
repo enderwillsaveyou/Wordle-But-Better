@@ -1,4 +1,4 @@
-const board = document.getElementById('board');
+const board = typeof document !== 'undefined' ? document.getElementById('board') : null;
 
 function createTiles(rows = 6, cols = 5) {
     for (let r = 0; r < rows; r++) {
@@ -20,9 +20,10 @@ let currentCol = 0; // index within the active row
 const MAX_ROWS = 6;
 const MAX_COLS = 5;
 
-createTiles(MAX_ROWS, MAX_COLS); // initialize the board
-
-document.addEventListener('keydown', handleKeyPress);
+if (board) {
+    createTiles(MAX_ROWS, MAX_COLS); // initialize the board
+    document.addEventListener('keydown', handleKeyPress);
+}
 
 /**
  * Stub validation function. Replace with real dictionary logic.
@@ -104,4 +105,18 @@ function flashInvalidRow() {
     setTimeout(() => {
         row.style.backgroundColor = original;
     }, 500);
+}
+
+// Export functions for testing in Node
+if (typeof module !== 'undefined') {
+    module.exports = {
+        createTiles,
+        handleKeyPress,
+        eraseLetter,
+        placeLetter,
+        submitRow,
+        getCurrentWord,
+        flashInvalidRow,
+        board
+    };
 }
